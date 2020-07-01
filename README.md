@@ -21,22 +21,28 @@ Subject_train <- read.table("train\\subject_train.txt")
 Full_Data <- rbind(cbind(Subject_test, Y_test, X_test), cbind(Subject_train, Y_train, X_train))
 
 ##Bind the rows together for both data sets
+
 Full_Data <- rbind(Test_Full_data, Train_Full_data)
 
 ##Rename the first and second column as Subjects and Activities
+
 names(Full_Data)[1] <- "Subjects"
 names(Full_Data)[2] <- "Activity"
 
 ##Rename all of the columns as features
+
 for(i in 1:561){names(Full_Data)[i+2] <- Features[i,2]}
 
 ##Order the data in Columns 1 and 2 by Subject Number and then by Activity Number
+
 Full_Data <- Full_Data[order(Full_Data[,1], Full_Data[,2]),]
 
 ##Extract only the mean and Std Deviation
+
 Full_Data <- Full_Data[, grep("mean|std|Subjects|Activity", colnames(Full_Data))]
 
 ##Replace Activity Numbers with Activity Names
+
 Full_Data$Activity[Full_Data$Activity == "1"] <- "Walking"
 Full_Data$Activity[Full_Data$Activity == "2"] <- "Walking_Upstairs"
 Full_Data$Activity[Full_Data$Activity == "3"] <- "Walking_Downstairs"
