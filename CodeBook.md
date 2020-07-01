@@ -66,13 +66,16 @@ Data manipulation in the R script:
                 numerical order (1-30) and then within each subject the activities
                 are listed in increasing numberical order (1-6).
                 
-                4. The activities are renamed based on the activity_labels.txt
+                4. Remove all columns that don't measure a mean or standard 
+                deviation excluding  the metadata columns 1 and 2
+                
+                5. The activities are renamed based on the activity_labels.txt
                 key provided in the initial download.
                 
-                5. Using the dplyr group_by() function the data is grouped into
+                6. Using the dplyr group_by() function the data is grouped into
                 Subjects and each Subject is subgrouped into activity.
                 
-                6. Utilizing the %>% operator those subgroups are fed into the
+                7. Utilizing the %>% operator those subgroups are fed into the
                 mean function which returns the average value for each variable 
                 for each activity and each subject
         
